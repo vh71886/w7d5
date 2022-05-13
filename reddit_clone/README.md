@@ -27,9 +27,9 @@ Write basic auth implementation for:
 * Application Controller
     * CHRRLLL
 
-## Phase 2
+## Phase 2: Sub and Post
 
-### Subs
+### Subs 
 * Sub 
 The creator of the sub is the moderator - user_id
 A sub has many posts
@@ -37,6 +37,7 @@ A sub has many posts
         - title:string      null:false
         - description:text  null:false
         - user_id:integer   null:false
+            - should change this to mod_id
     * Model
         - validate presence
         - write associations

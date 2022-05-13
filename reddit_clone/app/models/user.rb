@@ -6,7 +6,21 @@ class User < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
 
-    #SPIRE
+    # Associations
+
+    # for Post: author
+    has_many :authored_posts,
+        foreign_key: :user_id,
+        class_name: :Post,
+        primary_key: :id
+
+    # for Sub:moderator 
+    has_many :subs,
+        foreign_key: :user_id,
+        class_name: :User,
+        primary_key: :id
+
+    # SPIRE
     def self.find_by_credentials(username, password)
         @user = User.find_by(username: username)
         if @user && @user.is_password?(password)
