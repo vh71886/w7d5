@@ -17,6 +17,7 @@
         name="authenticity_token"
         value="<%= form_authenticity_token %>">
 
+    <%# Override method if editing user %>
     <% if type == :edit_user_form %>
     <input type="hidden"
         name="_method"
@@ -29,8 +30,9 @@
         name="user[username]"
         value="<%= user.username if user %>">
 
-    <br>
+    <%# Skip password field if editing user (doesn't pass validation, even with allow_nil) %>
     <% if type != :edit_user_form %>
+    <br>
     <label for="user[password]">Password:</label>
     <input type="password"
         id="user[password]"

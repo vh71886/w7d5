@@ -26,3 +26,36 @@ Write basic auth implementation for:
     * views: 
 * Application Controller
     * CHRRLLL
+
+## Phase 2
+
+### Subs
+* Sub 
+The creator of the sub is the moderator - user_id
+A sub has many posts
+    * Schema
+        - title:string      null:false
+        - description:text  null:false
+        - user_id:integer   null:false
+    * Controller
+        - edit
+            - moderator is allowed to update title and description
+            - before_action
+                - prohibit non-mods from editing the sub
+    * Routes
+        - all 7 routes
+
+### Posts
+* Post
+    * Schema    
+        - title:string      null:false
+        - url:string        optional
+        - content:text      optional
+        - sub_id:integer    null:false, index, unique: true
+        - author_id:integer null:false, index, unique: true
+    * Controller
+        - no index
+        - sub#show will show lists the posts instead
+        - only the author can edit their posts (edit and update)
+    * Routes
+        - 
