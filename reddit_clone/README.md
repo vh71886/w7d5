@@ -37,6 +37,9 @@ A sub has many posts
         - title:string      null:false
         - description:text  null:false
         - user_id:integer   null:false
+    * Model
+        - validate presence
+        - write associations
     * Controller
         - edit
             - moderator is allowed to update title and description
@@ -53,6 +56,9 @@ A sub has many posts
         - content:text      optional
         - sub_id:integer    null:false, index, unique: true
         - author_id:integer null:false, index, unique: true
+    * Model
+        - Write validations
+        - Write associations
     * Controller
         - no index
         - sub#show will show lists the posts instead
