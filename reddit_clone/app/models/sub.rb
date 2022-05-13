@@ -11,6 +11,7 @@ class Sub < ApplicationRecord
     has_many :posts,
         foreign_key: :sub_id,
         class_name: :Post,
-        primary_key: :id
+        primary_key: :id,
+        dependent: :destroy
 
 end

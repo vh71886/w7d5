@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.string :url
       t.text :content
-      t.integer :sub_id, null: false, unique: true
-      t.integer :author_id, null: false, unique: true
+      t.integer :sub_id, null: false
+      t.integer :author_id, null: false
 
       t.timestamps
     end
