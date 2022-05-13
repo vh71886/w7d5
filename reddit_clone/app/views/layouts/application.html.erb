@@ -10,6 +10,45 @@
   </head>
 
   <body>
+
+    <% if logged_in? %>
+    <%# Log Out Button  %>
+    <form action=<%= session_url %> method="POST">
+      <input type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+
+      <input type="hidden"
+        name="_method"
+        value="DELETE">
+      
+      <input type="submit" value="<%= 'Log Out' %>">
+    </form>
+    <% else %>
+    <%# Log in button %>
+    <form action=<%= new_session_url %> method="GET">
+      <input type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+      <input type="submit" value="<%= 'Sign In' %>">
+    </form>
+
+    <%# Sign up button %>
+    <form action=<%= new_user_url %> method="GET">
+      <input type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+      <input type="submit" value="<%= 'Sign Up' %>">
+    </form>
+    <% end %>
+    
+    <%# Main page %>
     <%= yield %>
+
+    <%# Display any errors to user %>
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+
   </body>
 </html>

@@ -9,7 +9,7 @@ class User < ApplicationRecord
     #SPIRE
     def self.find_by_credentials(username, password)
         @user = User.find_by(username: username)
-        if @user && user.is_password?(password)
+        if @user && @user.is_password?(password)
             @user
         else
             nil
@@ -17,11 +17,13 @@ class User < ApplicationRecord
     end
 
     def password=(password)
+        # .create makes an object and then saves to a string
         self.password_digest = BCrypt::Password.create(password)
         @password = password
     end
 
     def is_password?(password)
+        # .new converts to a password object
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
 

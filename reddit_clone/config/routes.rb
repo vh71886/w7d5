@@ -14,6 +14,4 @@ Rails.application.routes.draw do
 #             POST   /session(.:format)                                                                       sessions#create
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resource :session, only: [:new, :create, :destroy]
-
-  
 end
